@@ -6,7 +6,7 @@ using namespace std;
 #include<random>
 #include<chrono>
 
-bool solve(const int (*arr)[9]);//Î¨Ò»½âĞ£Ñé
+bool solve(const int (*arr)[9]);//å”¯ä¸€è§£æ ¡éªŒ
 bool solve_1(const vector<pair<int, int>>& v, const vector<pair<int, int>>::iterator it, int(*arr)[9]);
 bool solve_2(const vector<pair<int, int>>& v, const vector<pair<int, int>>::iterator it, int(*arr)[9]);
 
@@ -17,12 +17,12 @@ int build_1(int (*arr)[9]);
 
 
 bool final_plate(int(*arr)[9], const int serial = 0);
-//Éú³ÉÖÕÅÌ
+//ç”Ÿæˆç»ˆç›˜
 
 int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, const int(*arr)[9], const int add_number);
-//ÅÅ³ı·¨
-void exclusive_1(const int x, const int y, int (*arr)[9]);//Êı×ÖÅÅ³ı¹æÔò£¬Ä¿Ç°ÎªĞĞ¡¢ÁĞºÍ¾Å¹¬¸ñÅÅ³ı
-int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int(*arr)[9]);//Óà²î·¨
-int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, const int(*arr)[9]);//¶ş¼¶ÅÅ³ı
+//æ’é™¤æ³•
+void exclusive_1(const int x, const int y, int (*arr)[9]);//æ•°å­—æ’é™¤è§„åˆ™ï¼Œç›®å‰ä¸ºè¡Œã€åˆ—å’Œä¹å®«æ ¼æ’é™¤
+int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int(*arr)[9]);//ä½™å·®æ³•
+int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, const int(*arr)[9]);//äºŒçº§æ’é™¤
 
 bool primary_solve(int(*arr)[9]);
