@@ -1,11 +1,11 @@
-#include"±êÍ·.h"
+#include"è‡ªåˆ¶æ•°ç‹¬.h"
 
-mt19937_64 gen(chrono::system_clock::now().time_since_epoch().count());//È«¾ÖËæ»úÊıÒıÇæ
+mt19937_64 gen(chrono::system_clock::now().time_since_epoch().count());//å…¨å±€éšæœºæ•°å¼•æ“
 
 
-bool solve(const int (*arr)[9])//Î¨Ò»½âĞ£Ñé
+bool solve(const int (*arr)[9])//å”¯ä¸€è§£æ ¡éªŒ
 {
-	//¼ÇÂ¼¿Õ¸ñ×ÓÎ»ÖÃ
+	//è®°å½•ç©ºæ ¼å­ä½ç½®
 	vector<pair<int, int>> zero_v;
 	for (int i = 0; i < 9; i++)
 	{
@@ -19,7 +19,7 @@ bool solve(const int (*arr)[9])//Î¨Ò»½âĞ£Ñé
 		}
 	}
 
-	//´´½¨ÁÙÊ±Êı×é¶ÔÏó
+	//åˆ›å»ºä¸´æ—¶æ•°ç»„å¯¹è±¡
 	int arr_1[9][9] = { 0 };
 	for (int i = 0; i < 9; i++)
 	{
@@ -31,14 +31,14 @@ bool solve(const int (*arr)[9])//Î¨Ò»½âĞ£Ñé
 
 	if (zero_v.size() > 50)
 	{
-		if (primary_solve(arr_1))//³¢ÊÔÍÆÀí·½·¨½â´ğ
+		if (primary_solve(arr_1))//å°è¯•æ¨ç†æ–¹æ³•è§£ç­”
 		{
 			return 1;
 		}
 	}
 
-	//ÍÆÀí·½·¨ÎŞ·¨½â³ö£¬»ò²»ÊÊÒËÊ¹ÓÃÍÆÀí·½·¨¡£Ê¹ÓÃ»ØËİ·¨¡£
-	//arr_2ÓÃÓÚ¶ş´Î»ØËİÅĞ¶ÏÎ¨Ò»½â
+	//æ¨ç†æ–¹æ³•æ— æ³•è§£å‡ºï¼Œæˆ–ä¸é€‚å®œä½¿ç”¨æ¨ç†æ–¹æ³•ã€‚ä½¿ç”¨å›æº¯æ³•ã€‚
+	//arr_2ç”¨äºäºŒæ¬¡å›æº¯åˆ¤æ–­å”¯ä¸€è§£
 	int arr_2[9][9] = { 0 };
 	for (int i = 0; i < 9; i++)
 	{
@@ -50,9 +50,9 @@ bool solve(const int (*arr)[9])//Î¨Ò»½âĞ£Ñé
 
 	vector<pair<int, int>>::iterator it = zero_v.begin();
 
-	if (solve_1(zero_v, it, arr_1))//ÓĞ½â
+	if (solve_1(zero_v, it, arr_1))//æœ‰è§£
 	{
-		solve_2(zero_v, it, arr_2);//ÅĞ¶ÏÎ¨Ò»½â
+		solve_2(zero_v, it, arr_2);//åˆ¤æ–­å”¯ä¸€è§£
 
 		for (int i = 0; i < 9; i++)
 		{
@@ -60,15 +60,15 @@ bool solve(const int (*arr)[9])//Î¨Ò»½âĞ£Ñé
 			{
 				if (arr_1[i][j] != arr_2[i][j])
 				{
-					return 0;//ÓĞ¶à½â
+					return 0;//æœ‰å¤šè§£
 				}
 			}
 		}
-		return 1;//Î¨Ò»½â
+		return 1;//å”¯ä¸€è§£
 	}
 	else
 	{
-		return 0;//ÎŞ½â
+		return 0;//æ— è§£
 	}
 }
 
@@ -118,7 +118,7 @@ bool solve_1(const vector<pair<int, int>>& v, const vector<pair<int, int>>::iter
 					return 1;
 				}
 			}
-			else//½â´ğÍê³É
+			else//è§£ç­”å®Œæˆ
 			{
 				return 1;
 			}
@@ -174,7 +174,7 @@ bool solve_2(const vector<pair<int, int>>& v, const vector<pair<int, int>>::iter
 					return 1;
 				}
 			}
-			else//½â´ğÍê³É
+			else//è§£ç­”å®Œæˆ
 			{
 				return 1;
 			}
@@ -184,9 +184,9 @@ bool solve_2(const vector<pair<int, int>>& v, const vector<pair<int, int>>::iter
 	return 0;
 }
 
-int build(int (*arr)[9], const int (*answer_arr)[9])//¸ù¾İ¸ø¶¨ÖÕÅÌ³öÌâ
+int build(int (*arr)[9], const int (*answer_arr)[9])//æ ¹æ®ç»™å®šç»ˆç›˜å‡ºé¢˜
 {
-	//Éú³ÉÁÙÊ±Êı×é
+	//ç”Ÿæˆä¸´æ—¶æ•°ç»„
 	int t_arr[9][9] = { 0 };
 	for (int i = 0; i < 9; i++)
 	{
@@ -196,7 +196,7 @@ int build(int (*arr)[9], const int (*answer_arr)[9])//¸ù¾İ¸ø¶¨ÖÕÅÌ³öÌâ
 		}
 	}
 
-	//Éú³ÉÎ»ÖÃ±í
+	//ç”Ÿæˆä½ç½®è¡¨
 	int rand_arr[81] = { 0 };
 	int t_index = 0;
 	for (int m = 11; m < 100; m++)
@@ -208,11 +208,11 @@ int build(int (*arr)[9], const int (*answer_arr)[9])//¸ù¾İ¸ø¶¨ÖÕÅÌ³öÌâ
 		}
 	}
 
-	//Ëæ»úË³ĞòÍÚ¿Õ
+	//éšæœºé¡ºåºæŒ–ç©º
 	for (int f = 0; f < 81; f++)
 	{
 		uniform_int_distribution<int> distrib(0, 80 - f);
-		int a = distrib(gen);//Éú³ÉËæ»úÊı
+		int a = distrib(gen);//ç”Ÿæˆéšæœºæ•°
 
 		int x = rand_arr[a] / 10 - 1;
 		int y = rand_arr[a] % 10 - 1;
@@ -229,7 +229,7 @@ int build(int (*arr)[9], const int (*answer_arr)[9])//¸ù¾İ¸ø¶¨ÖÕÅÌ³öÌâ
 		}
 	}
 
-	//Ğ´Èë²ÎÊıÊı×éÖĞ
+	//å†™å…¥å‚æ•°æ•°ç»„ä¸­
 	for (int i = 0; i < 9; i++)
 	{
 		for (int j = 0; j < 9; j++)
@@ -238,7 +238,7 @@ int build(int (*arr)[9], const int (*answer_arr)[9])//¸ù¾İ¸ø¶¨ÖÕÅÌ³öÌâ
 		}
 	}
 
-	//Í³¼ÆÊı×Ö¸öÊı
+	//ç»Ÿè®¡æ•°å­—ä¸ªæ•°
 	int n = 0;
 	for (int i = 0; i < 9; i++)
 	{
@@ -253,9 +253,9 @@ int build(int (*arr)[9], const int (*answer_arr)[9])//¸ù¾İ¸ø¶¨ÖÕÅÌ³öÌâ
 	return n;
 }
 
-int build_1(int (*arr)[9])//ÔÚÒÑÓĞÌâÃæÉÏ¼õÉÙÊı×Ö
+int build_1(int (*arr)[9])//åœ¨å·²æœ‰é¢˜é¢ä¸Šå‡å°‘æ•°å­—
 {
-	//Éú³É¿Õ¸ñ×ÓÎ»ÖÃ±í
+	//ç”Ÿæˆç©ºæ ¼å­ä½ç½®è¡¨
 	vector<pair<int, int>> site_v;
 	for (int i = 0; i < 9; i++)
 	{
@@ -270,7 +270,7 @@ int build_1(int (*arr)[9])//ÔÚÒÑÓĞÌâÃæÉÏ¼õÉÙÊı×Ö
 	}
 	int size = site_v.size();
 
-	//Ëæ»úÍÚ¿Õ
+	//éšæœºæŒ–ç©º
 	for (int f = 0; f < size; f++)
 	{
 		uniform_int_distribution<int> distrib(0, size - f - 1);
@@ -297,7 +297,7 @@ int build_1(int (*arr)[9])//ÔÚÒÑÓĞÌâÃæÉÏ¼õÉÙÊı×Ö
 		}
 	}
 
-	//Í³¼Æ¿Õ¸ñ×ÓÊı
+	//ç»Ÿè®¡ç©ºæ ¼å­æ•°
 	int n = 0;
 	for (int i = 0; i < 9; i++)
 	{
@@ -312,7 +312,7 @@ int build_1(int (*arr)[9])//ÔÚÒÑÓĞÌâÃæÉÏ¼õÉÙÊı×Ö
 	return n;
 }
 
-bool final_plate(int(*arr)[9], const int serial)//Éú³ÉÖÕÅÌ
+bool final_plate(int(*arr)[9], const int serial)//ç”Ÿæˆç»ˆç›˜
 {
 	const int i = serial / 9;
 	const int j = serial % 9;
@@ -365,36 +365,36 @@ bool final_plate(int(*arr)[9], const int serial)//Éú³ÉÖÕÅÌ
 		{
 			arr[i][j] = number;
 
-			if (serial != 80)//Î´µ½´ï×îºóÒ»¸ñ
+			if (serial != 80)//æœªåˆ°è¾¾æœ€åä¸€æ ¼
 			{			
 				int s = serial;
 				if (final_plate(arr, ++s))
 				{
-					return 1;//È«²¿Ìî³äÍê±Ï
+					return 1;//å…¨éƒ¨å¡«å……å®Œæ¯•
 				}
 			}
-			else//ÒÑµ½´ï×îºóÒ»¸ñ
+			else//å·²åˆ°è¾¾æœ€åä¸€æ ¼
 			{
-				return 1;//¿ÉÌî
+				return 1;//å¯å¡«
 			}
 		}
 		else
 		{
-			//¸ÃÊı×Ö²»¿ÉÌî
+			//è¯¥æ•°å­—ä¸å¯å¡«
 		}
-		//³¢ÊÔÏÂÒ»¸öÊı
+		//å°è¯•ä¸‹ä¸€ä¸ªæ•°
 	}
 
-	//ÎŞ¿ÉÌîÊı×Ö£¬²»Ìî²¢»ØÍË
+	//æ— å¯å¡«æ•°å­—ï¼Œä¸å¡«å¹¶å›é€€
 	arr[i][j] = 0;
 	return 0;
 }
 
-int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, const int(*arr)[9], const int add_number)//ÅÅ³ı·¨
+int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, const int(*arr)[9], const int add_number)//æ’é™¤æ³•
 {
-	if (add_number == 0)//Ê×´Îµ÷ÓÃ£¨Ä¬ÈÏ²ÎÊıÎª0£©
+	if (add_number == 0)//é¦–æ¬¡è°ƒç”¨ï¼ˆé»˜è®¤å‚æ•°ä¸º0ï¼‰
 	{
-		//´´½¨¾ÅÕÅ¶ÔÓ¦Êı×ÖÅÅ³ı±í
+		//åˆ›å»ºä¹å¼ å¯¹åº”æ•°å­—æ’é™¤è¡¨
 		for (int n = 0; n < 9; n++)
 		{
 			for (int i = 0; i < 9; i++)
@@ -409,7 +409,7 @@ int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, con
 				}
 			}
 
-			//´´½¨Í³ºÏ±í
+			//åˆ›å»ºç»Ÿåˆè¡¨
 			for (int i = 0; i < 9; i++)
 			{
 				for (int j = 0; j < 9; j++)
@@ -419,11 +419,11 @@ int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, con
 			}
 		}
 	}
-	else//ºóĞøµ÷ÓÃ
+	else//åç»­è°ƒç”¨
 	{
 		int n = add_number - 1;
 
-		//³é³öµ¥ÕÅÅÅ³ı±í
+		//æŠ½å‡ºå•å¼ æ’é™¤è¡¨
 		for (int i = 0; i < 9; i++)
 		{
 			for (int j = 0; j < 9; j++)
@@ -435,7 +435,7 @@ int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, con
 			}
 		}
 
-		//ĞŞ¸Äµ¥ÕÅÅÅ³ı±í
+		//ä¿®æ”¹å•å¼ æ’é™¤è¡¨
 		for (int i = 0; i < 9; i++)
 		{
 			for (int j = 0; j < 9; j++)
@@ -448,7 +448,7 @@ int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, con
 			}
 		}
 
-		//²å»Øµ¥ÕÅÅÅ³ı±í
+		//æ’å›å•å¼ æ’é™¤è¡¨
 		for (int i = 0; i < 9; i++)
 		{
 			for (int j = 0; j < 9; j++)
@@ -458,7 +458,7 @@ int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, con
 		}
 	}
 
-	//Çó½â¼°ÅĞ¶¨
+	//æ±‚è§£åŠåˆ¤å®š
 	for (int i = 0; i < 9; i++)
 	{
 		for (int j = 0; j < 9; j++)
@@ -473,31 +473,31 @@ int exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, con
 					{
 						if (number_arr[n][i][j] == 0)
 						{
-							return n + 1;//ÕÒµ½´ğ°¸
+							return n + 1;//æ‰¾åˆ°ç­”æ¡ˆ
 						}
 					}
 				}
 			}
 		}
 	}
-	return -2;//Î´ÕÒµ½´ğ°¸
+	return -2;//æœªæ‰¾åˆ°ç­”æ¡ˆ
 }
 
-void exclusive_1(const int x, const int y, int (*arr)[9])//Êı×ÖÅÅ³ı¹æÔò£¬Ä¿Ç°ÎªĞĞ¡¢ÁĞºÍ¾Å¹¬¸ñÅÅ³ı
+void exclusive_1(const int x, const int y, int (*arr)[9])//æ•°å­—æ’é™¤è§„åˆ™ï¼Œç›®å‰ä¸ºè¡Œã€åˆ—å’Œä¹å®«æ ¼æ’é™¤
 {
-	//ÁĞ
+	//åˆ—
 	for (int j = 0; j < 9; j++)
 	{
 		arr[x][j] = 1;
 	}
 
-	//ĞĞ
+	//è¡Œ
 	for (int i = 0; i < 9; i++)
 	{
 		arr[i][y] = 1;
 	}
 
-	//¾Å¹¬¸ñ
+	//ä¹å®«æ ¼
 	int a = x / 3 * 3;
 	int b = y / 3 * 3;
 	for (int i = 0; i < 3; i++)
@@ -510,16 +510,16 @@ void exclusive_1(const int x, const int y, int (*arr)[9])//Êı×ÖÅÅ³ı¹æÔò£¬Ä¿Ç°ÎªĞ
 	return;
 }
 
-int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int(*arr)[9])//Óà²î·¨
+int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int(*arr)[9])//ä½™å·®æ³•
 {
-	//ĞĞ
+	//è¡Œ
 	for (int i = 0; i < 9; i++)
 	{
 		int m_x = 0;
 		int m_y = 0;
 		int m_n = 0;
 
-		//±£´æ¿Õ¸ñ×Ó
+		//ä¿å­˜ç©ºæ ¼å­
 		vector<pair<int, int>> zero;
 		for (int j = 0; j < 9; j++)
 		{
@@ -532,8 +532,8 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 
 		for (int n = 0; n < 9; n++)
 		{
-			int a = 0;//¿Õ¸ñ×ÓÅÅ³ıÊı
-			bool b = 0;//ĞĞÄÚÊÇ·ñÓĞ¸ÃÊı×ÖÅĞ¶¨
+			int a = 0;//ç©ºæ ¼å­æ’é™¤æ•°
+			bool b = 0;//è¡Œå†…æ˜¯å¦æœ‰è¯¥æ•°å­—åˆ¤å®š
 			for (int j = 0; j < 9; j++)
 			{
 				if (arr[i][j] == n + 1)
@@ -542,7 +542,7 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 				}
 			}
 
-			if (b == 0)//ĞĞÄÚÃ»ÓĞ¸ÃÊı×Ö
+			if (b == 0)//è¡Œå†…æ²¡æœ‰è¯¥æ•°å­—
 			{
 
 				for (vector<pair<int, int>>::iterator it = zero.begin(); it != zero.end(); it++)
@@ -559,7 +559,7 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 					}
 				}
 
-				if (zero.size() - a == 1)//ĞĞÓà1
+				if (zero.size() - a == 1)//è¡Œä½™1
 				{
 					x = m_x;
 					y = m_y;
@@ -569,14 +569,14 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 		}
 	}
 
-	//ÁĞ
+	//åˆ—
 	for (int j = 0; j < 9; j++)
 	{
 		int m_x = 0;
 		int m_y = 0;
 		int m_n = 0;
 
-		//±£´æ¿Õ¸ñ×Ó
+		//ä¿å­˜ç©ºæ ¼å­
 		vector<pair<int, int>> zero;
 		for (int i = 0; i < 9; i++)
 		{
@@ -589,8 +589,8 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 
 		for (int n = 0; n < 9; n++)
 		{
-			int a = 0;//¿Õ¸ñ×ÓÅÅ³ıÊı
-			bool b = 0;//ÁĞÄÚÊÇ·ñÓĞ¸ÃÊı×ÖÅĞ¶¨
+			int a = 0;//ç©ºæ ¼å­æ’é™¤æ•°
+			bool b = 0;//åˆ—å†…æ˜¯å¦æœ‰è¯¥æ•°å­—åˆ¤å®š
 			for (int i = 0; i < 9; i++)
 			{
 				if (arr[i][j] == n + 1)
@@ -599,7 +599,7 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 				}
 			}
 
-			if (b == 0)//ÁĞÄÚÃ»ÓĞ¸ÃÊı×Ö
+			if (b == 0)//åˆ—å†…æ²¡æœ‰è¯¥æ•°å­—
 			{
 				for (vector<pair<int, int>>::iterator it = zero.begin(); it != zero.end(); it++)
 				{
@@ -615,7 +615,7 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 					}
 				}
 
-				if (zero.size() - a == 1)//ÁĞÓà1
+				if (zero.size() - a == 1)//åˆ—ä½™1
 				{
 					x = m_x;
 					y = m_y;
@@ -626,7 +626,7 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 	}
 
 
-	//¾Å¹¬¸ñ
+	//ä¹å®«æ ¼
 	for (int m_i = 0; m_i < 3; m_i++)
 	{
 		for (int m_j = 0; m_j < 3; m_j++)
@@ -635,7 +635,7 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 			int m_y = 0;
 			int m_n = 0;
 
-			//±£´æ¿Õ¸ñ×Ó
+			//ä¿å­˜ç©ºæ ¼å­
 			vector<pair<int, int>> zero;
 			for (int i = m_i * 3; i < m_i * 3 + 3; i++)
 			{
@@ -651,8 +651,8 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 
 			for (int n = 0; n < 9; n++)
 			{
-				int a = 0;//¿Õ¸ñ×ÓÅÅ³ıÊı
-				bool b = 0;//¾Å¹¬¸ñÄÚÊÇ·ñÓĞ¸ÃÊı×ÖÅĞ¶¨
+				int a = 0;//ç©ºæ ¼å­æ’é™¤æ•°
+				bool b = 0;//ä¹å®«æ ¼å†…æ˜¯å¦æœ‰è¯¥æ•°å­—åˆ¤å®š
 
 				for (int i = m_i * 3; i < m_i * 3 + 3; i++)
 				{
@@ -665,7 +665,7 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 					}
 				}
 
-				if (b == 0)//¾Å¹¬¸ñÄÚÃ»ÓĞ¸ÃÊı×Ö
+				if (b == 0)//ä¹å®«æ ¼å†…æ²¡æœ‰è¯¥æ•°å­—
 				{
 					for (vector<pair<int, int>>::iterator it = zero.begin(); it != zero.end(); it++)
 					{
@@ -681,7 +681,7 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 						}
 					}
 
-					if (zero.size() - a == 1)//¾Å¹¬¸ñÓà1
+					if (zero.size() - a == 1)//ä¹å®«æ ¼ä½™1
 					{
 						x = m_x;
 						y = m_y;
@@ -691,10 +691,10 @@ int residual_difference(const int (*number_arr)[9][9], int& x, int& y, const int
 			}
 		}
 	}
-	return -3;//Î´ÕÒµ½´ğ°¸
+	return -3;//æœªæ‰¾åˆ°ç­”æ¡ˆ
 }
 
-int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, const int(*arr)[9])//¶ş¼¶ÅÅ³ı
+int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int& y, const int(*arr)[9])//äºŒçº§æ’é™¤
 {
 	for (int n = 0; n < 9; n++)
 	{
@@ -704,9 +704,9 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 			{
 				if ((number_arr[n][i][j] == 0) && (arr[i][j] == 0))
 				{
-					bool a = 1;//¿ÉÌîÎ»ÖÃÅĞ¶¨
+					bool a = 1;//å¯å¡«ä½ç½®åˆ¤å®š
 
-					//´´½¨ÁÙÊ±±í
+					//åˆ›å»ºä¸´æ—¶è¡¨
 					int t_n_arr[9][9] = { 0 };
 					int t_arr[9][9] = { 0 };
 					for (int i = 0; i < 9; i++)
@@ -722,9 +722,9 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 					t_arr[i][j] = n + 1;
 
 
-					for (int i = 0; i < 9; i++)//ĞĞ³ÉÁ¢ÅĞ¶¨
+					for (int i = 0; i < 9; i++)//è¡Œæˆç«‹åˆ¤å®š
 					{
-						bool b = 1;//ÍêÈ«ÅÅ³ıĞĞÅĞ¶¨
+						bool b = 1;//å®Œå…¨æ’é™¤è¡Œåˆ¤å®š
 						for (int j = 0; j < 9; j++)
 						{
 							if ((t_n_arr[i][j] == 0) && (t_arr[i][j] == 0))
@@ -733,9 +733,9 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 							}
 						}
 
-						if (b == 1)//ÊÇÍêÈ«ÅÅ³ıĞĞ
+						if (b == 1)//æ˜¯å®Œå…¨æ’é™¤è¡Œ
 						{
-							bool c = 0;//µ¥ĞĞ³ÉÁ¢ÅĞ¶¨
+							bool c = 0;//å•è¡Œæˆç«‹åˆ¤å®š
 							for (int j = 0; j < 9; j++)
 							{
 								if (t_arr[i][j] == n + 1)
@@ -744,16 +744,16 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 								}
 							}
 
-							if (c == 0)//µ¥ĞĞ²»³ÉÁ¢
+							if (c == 0)//å•è¡Œä¸æˆç«‹
 							{
 								a = 0;
 							}
 						}
 					}
 
-					for (int j = 0; j < 9; j++)//ÁĞ³ÉÁ¢ÅĞ¶¨
+					for (int j = 0; j < 9; j++)//åˆ—æˆç«‹åˆ¤å®š
 					{
-						bool b = 1;//ÍêÈ«ÅÅ³ıÁĞÅĞ¶¨
+						bool b = 1;//å®Œå…¨æ’é™¤åˆ—åˆ¤å®š
 						for (int i = 0; i < 9; i++)
 						{
 							if ((t_n_arr[i][j] == 0) && (t_arr[i][j] == 0))
@@ -762,9 +762,9 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 							}
 						}
 
-						if (b == 1)//ÊÇÍêÈ«ÅÅ³ıÁĞ
+						if (b == 1)//æ˜¯å®Œå…¨æ’é™¤åˆ—
 						{
-							bool c = 0;//µ¥ÁĞ³ÉÁ¢ÅĞ¶¨
+							bool c = 0;//å•åˆ—æˆç«‹åˆ¤å®š
 							for (int i = 0; i < 9; i++)
 							{
 								if (t_arr[i][j] == n + 1)
@@ -773,19 +773,19 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 								}
 							}
 
-							if (c == 0)//µ¥ÁĞ²»³ÉÁ¢
+							if (c == 0)//å•åˆ—ä¸æˆç«‹
 							{
 								a = 0;
 							}
 						}
 					}
 
-					//¾Å¹¬¸ñ³ÉÁ¢ÅĞ¶¨
+					//ä¹å®«æ ¼æˆç«‹åˆ¤å®š
 					for (int m_i = 0; m_i < 3; m_i++)
 					{
 						for (int m_j = 0; m_j < 3; m_j++)
 						{
-							bool b = 1;//ÍêÈ«ÅÅ³ı¾Å¹¬¸ñÅĞ¶¨
+							bool b = 1;//å®Œå…¨æ’é™¤ä¹å®«æ ¼åˆ¤å®š
 							for (int i = m_i * 3; i < m_i * 3 + 3; i++)
 							{
 								for (int j = m_j * 3; j < m_j * 3 + 3; j++)
@@ -797,9 +797,9 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 								}
 							}
 
-							if (b == 1)//ÊÇÍêÈ«ÅÅ³ı¾Å¹¬¸ñ
+							if (b == 1)//æ˜¯å®Œå…¨æ’é™¤ä¹å®«æ ¼
 							{
-								bool c = 0;//µ¥¾Å¹¬¸ñ³ÉÁ¢ÅĞ¶¨
+								bool c = 0;//å•ä¹å®«æ ¼æˆç«‹åˆ¤å®š
 								for (int i = m_i * 3; i < m_i * 3 + 3; i++)
 								{
 									for (int j = m_j * 3; j < m_j * 3 + 3; j++)
@@ -811,7 +811,7 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 									}
 								}
 
-								if (c == 0)//µ¥¾Å¹¬¸ñ²»³ÉÁ¢
+								if (c == 0)//å•ä¹å®«æ ¼ä¸æˆç«‹
 								{
 									a = 0;
 								}
@@ -819,7 +819,7 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 						}
 					}
 
-					if (a == 0)//¸ÃÎ»ÖÃ²»¿ÉÌî
+					if (a == 0)//è¯¥ä½ç½®ä¸å¯å¡«
 					{
 						number_arr[n][i][j] = 1;
 						statistics[i][j] += 1;
@@ -850,15 +850,15 @@ int double_exclusive(int (*number_arr)[9][9], int (*statistics)[9], int& x, int&
 			}
 		}
 	}
-	return -4;//¶ş¼¶ÅÅ³ıÎ´ÕÒµ½
+	return -4;//äºŒçº§æ’é™¤æœªæ‰¾åˆ°
 }
 
 bool primary_solve(int(*arr)[9])
 {
-	int (*number_arr)[9][9] = new int[9][9][9];//¶ÔÓ¦Êı×Ö£¬ĞĞ£¬ÁĞ
-	int statistics[9][9] = { 0 };//Í³ºÏ±í
+	int (*number_arr)[9][9] = new int[9][9][9];//å¯¹åº”æ•°å­—ï¼Œè¡Œï¼Œåˆ—
+	int statistics[9][9] = { 0 };//ç»Ÿåˆè¡¨
 
-	for (int i = 0; i < 9; i++)//³õÊ¼»¯
+	for (int i = 0; i < 9; i++)//åˆå§‹åŒ–
 	{
 		for (int j = 0; j < 9; j++)
 		{
@@ -870,24 +870,24 @@ bool primary_solve(int(*arr)[9])
 		}
 	}
 
-	int x = -1;//ĞĞ
-	int y = -1;//ÁĞ
-	int answer = 0;//´ğ°¸
+	int x = -1;//è¡Œ
+	int y = -1;//åˆ—
+	int answer = 0;//ç­”æ¡ˆ
 
 	while (1)
 	{
 		answer = exclusive(number_arr, statistics, x, y, arr, answer);
 
-		if (answer == -2)//ÅÅ³ı·¨Î´ÕÒµ½
+		if (answer == -2)//æ’é™¤æ³•æœªæ‰¾åˆ°
 		{
 			answer = residual_difference(number_arr, x, y, arr);
-			if (answer == -3)//Óà²î·¨Î´ÕÒµ½
+			if (answer == -3)//ä½™å·®æ³•æœªæ‰¾åˆ°
 			{
 				answer = double_exclusive(number_arr, statistics, x, y, arr);
 
-				if (answer == -4)//¶ş¼¶ÅÅ³ıÎ´ÕÒµ½
+				if (answer == -4)//äºŒçº§æ’é™¤æœªæ‰¾åˆ°
 				{
-					bool a = 1;//½â´ğÍê³ÉÅĞ¶¨
+					bool a = 1;//è§£ç­”å®Œæˆåˆ¤å®š
 					for (int i = 0; i < 9; i++)
 					{
 						for (int j = 0; j < 9; j++)
@@ -899,28 +899,28 @@ bool primary_solve(int(*arr)[9])
 						}
 					}
 
-					if (a == 1)//½â´ğÍê³É
+					if (a == 1)//è§£ç­”å®Œæˆ
 					{
 						delete[] number_arr;
 						return 1;
 					}
-					else//½â´ğÎ´Íê³É
+					else//è§£ç­”æœªå®Œæˆ
 					{
 						delete[] number_arr;
 						return 0;
 					}
 				}
-				else//¶ş¼¶ÅÅ³ıÕÒµ½
+				else//äºŒçº§æ’é™¤æ‰¾åˆ°
 				{
 					arr[x][y] = answer;
 				}
 			}
-			else//Óà²î·¨ÕÒµ½
+			else//ä½™å·®æ³•æ‰¾åˆ°
 			{
 				arr[x][y] = answer;
 			}
 		}
-		else//ÅÅ³ı·¨ÕÒµ½
+		else//æ’é™¤æ³•æ‰¾åˆ°
 		{
 			arr[x][y] = answer;
 		}
